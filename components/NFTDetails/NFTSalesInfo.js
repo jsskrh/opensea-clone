@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const style = {
   wrapper:
-    "flex flex-col divide-y border dark:divide-black dark:rounded-lg dark-border-black",
+    "flex flex-col divide-y border dark:divide-black dark:rounded-lg dark:border-black",
   header:
     "flex items-center justify-between rounded-t-lg px-6 py-4 dark:bg-[#262a38]",
   headerContent: "flex items-center space-x-2",
