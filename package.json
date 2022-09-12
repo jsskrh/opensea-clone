@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.10",
     "@thirdweb-dev/react": "^2.9.7",
     "@thirdweb-dev/sdk": "^2.4.9",
     "ethers": "^5.7.0",
