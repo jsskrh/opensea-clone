@@ -2,11 +2,20 @@ import { useAddress, useMarketplace } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import NFTDetails from "../../../components/NFTDetails/NFTDetails";
 import NFTImage from "../../../components/NFTDetails/NFTImage";
 import NFTSalesInfo from "../../../components/NFTDetails/NFTSalesInfo";
 import TopNavbarLayout from "../../../layouts/TopNavbarLayout";
 
-const style = {};
+const style = {
+  wrapper:
+    "h-[100vh] mx-auto flex max-w-2xl flex-col space-y-4 py-4 dark:bg-[#202226] lg:max-w-none lg:py-0 lg:px-24",
+  nftContainer: "flex flex-col lg:flex-row lg:space-x-4",
+  leftContainer: "flex flex-col space-y-4",
+  leftElement: "hidden lg:block",
+  rightContainer: "flex flex-1 flex-col space-y-4",
+  buyoutContainer: "flex-1",
+};
 
 const NFT = () => {
   const [loading, setLoading] = useState(true);
@@ -59,7 +68,9 @@ const NFT = () => {
                 <NFTImage image={listing?.asset?.image} />
               </div>
 
-              <div className={style.leftElement}>{/* <NFTDetails /> */}</div>
+              <div className={style.leftElement}>
+                <NFTDetails />
+              </div>
             </div>
 
             <div className={style.rightContainer}>
