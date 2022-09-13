@@ -2,6 +2,7 @@ import { useAddress, useMarketplace } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import NFTBasicInfo from "../../../components/NFTDetails/NFTBasicInfo";
 import NFTDetails from "../../../components/NFTDetails/NFTDetails";
 import NFTImage from "../../../components/NFTDetails/NFTImage";
 import NFTSalesInfo from "../../../components/NFTDetails/NFTSalesInfo";
@@ -74,7 +75,7 @@ const NFT = () => {
             </div>
 
             <div className={style.rightContainer}>
-              {/* <NFTBasicInfo /> */}
+              <NFTBasicInfo name={listing?.asset.name} />
 
               <div className={style.buyoutContainer}>
                 <NFTSalesInfo

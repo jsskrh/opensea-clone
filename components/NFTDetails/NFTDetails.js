@@ -1,5 +1,6 @@
 import { GrTextAlignLeft } from "react-icons/gr";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import Dropdown from "./Dropdown";
 
 const style = {
   wrapper:
@@ -15,7 +16,7 @@ const NFTDetails = () => {
   return (
     <div className={style.wrapper}>
       {dropdownData.map((item, index) => (
-        <div>Dropdown Item</div>
+        <Dropdown key={index} title={item.name} icon={item.icon} />
       ))}
     </div>
   );
