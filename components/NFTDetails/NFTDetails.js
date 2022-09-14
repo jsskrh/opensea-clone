@@ -8,7 +8,7 @@ const style = {
   icon: "h-5 w-5 text-gray-600",
 };
 
-const NFTDetails = () => {
+const NFTDetails = ({ details, loading }) => {
   const dropdownData = [
     { name: "Description", icon: <GrTextAlignLeft className={style.icon} /> },
     { name: "Properties", icon: <BsFillBookmarkFill className={style.icon} /> },
@@ -16,7 +16,13 @@ const NFTDetails = () => {
   return (
     <div className={style.wrapper}>
       {dropdownData.map((item, index) => (
-        <Dropdown key={index} title={item.name} icon={item.icon} />
+        <Dropdown
+          key={index}
+          title={item.name}
+          icon={item.icon}
+          description={details.description}
+          loading={loading}
+        />
       ))}
     </div>
   );

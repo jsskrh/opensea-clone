@@ -11,9 +11,11 @@ const style = {
   icon: "h-6 w-6 text-gray-500 dark:text-gray-400",
   assetTitle: "pt-6 text-4xl font-bold text-gray-700 dark:text-gray-100",
   subInfoContainer: "hidden lg:block",
+  textPulse: "h-2 bg-slate-700 rounded",
+  containerPulse: "bg-slate-700 rounded-full items-center my-3",
 };
 
-const NFTBasicInfo = ({ name }) => {
+const NFTBasicInfo = ({ name, loading }) => {
   const actionItems = [
     { icon: <BiRefresh className={style.icon} /> },
     { icon: <BiLinkExternal className={style.icon} /> },
@@ -24,21 +26,35 @@ const NFTBasicInfo = ({ name }) => {
   return (
     <div>
       <div className={style.topContainer}>
-        <div className={style.collectionTitle}>Bored Apes Yatch Club</div>
+        {loading ? (
+          <div className={`${style.containerPulse} h-5 w-1/3`}></div>
+        ) : (
+          <div className={style.collectionTitle}>Bored Apes Yatch Club</div>
+        )}
 
-        <div className={style.actionItems}>
-          {actionItems.map((item, index) => (
-            <div key={index} className={style.actionItemContainer}>
-              {item.icon}
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className={`${style.containerPulse} h-10 w-[200px]`}></div>
+        ) : (
+          <div className={style.actionItems}>
+            {actionItems.map((item, index) => (
+              <div key={index} className={style.actionItemContainer}>
+                {item.icon}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div className={style.assetTitle}>{name}</div>
+      <div className={style.assetTitle}>
+        {loading ? (
+          <div className={`${style.containerPulse} h-10 w-1/2`}></div>
+        ) : (
+          name
+        )}
+      </div>
 
       <div className={style.subInfoContainer}>
-        <NFTSubInfo />
+        <NFTSubInfo loading={loading} />
       </div>
     </div>
   );

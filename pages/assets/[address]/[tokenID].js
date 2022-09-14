@@ -11,6 +11,8 @@ import TopNavbarLayout from "../../../layouts/TopNavbarLayout";
 const style = {
   wrapper:
     "h-[100vh] mx-auto flex max-w-2xl flex-col space-y-4 py-4 dark:bg-[#202226] lg:max-w-none lg:py-0 lg:px-24",
+  nftLoadingContainer: "flex flex-col lg:flex-row lg:space-x-4",
+  loading: "animate-pulse",
   nftContainer: "flex flex-col lg:flex-row lg:space-x-4",
   leftContainer: "flex flex-col space-y-4",
   leftElement: "hidden lg:block",
@@ -57,36 +59,63 @@ const NFT = () => {
     }
   };
 
+  const details = {
+    description: listing?.asset.description,
+    attributes: listing?.asset.attributes,
+  };
+
   return (
     <TopNavbarLayout>
       <div className={style.wrapper}>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <div className={style.nftContainer}>
-            <div className={style.leftContainer}>
-              <div className={style.leftElement}>
-                <NFTImage image={listing?.asset?.image} />
-              </div>
-
-              <div className={style.leftElement}>
-                <NFTDetails />
-              </div>
+        {/* {loading ? ( */}
+        <div className={`${style.nftContainer} ${loading && style.loading}`}>
+          <div className={style.leftContainer}>
+            <div className={style.leftElement}>
+              <NFTImage image={listing?.asset?.image} loading={loading} />
             </div>
 
-            <div className={style.rightContainer}>
-              <NFTBasicInfo name={listing?.asset.name} />
-
-              <div className={style.buyoutContainer}>
-                <NFTSalesInfo
-                  price={listing?.buyoutCurrencyValuePerToken.displayValue}
-                  buyNFT={buyNFT}
-                />
-              </div>
+            <div className={style.leftElement}>
+              <NFTDetails details={details} loading={loading} />
             </div>
           </div>
-        )}
-        <div className={style}></div>
+
+          <div className={style.rightContainer}>
+            <NFTBasicInfo name={listing?.asset.name} loading={loading} />
+
+            <div className={style.buyoutContainer}>
+              <NFTSalesInfo
+                price={listing?.buyoutCurrencyValuePerToken.displayValue}
+                buyNFT={buyNFT}
+                loading={loading}
+              />
+            </div>
+          </div>
+        </div>
+        {/* ) : (
+        //   <div className={style.nftContainer}>
+        //     <div className={style.leftContainer}>
+        //       <div className={style.leftElement}>
+        //         <NFTImage image={listing?.asset?.image} />
+        //       </div>
+
+        //       <div className={style.leftElement}>
+        //         <NFTDetails details={details} />
+        //       </div>
+        //     </div>
+
+        //     <div className={style.rightContainer}>
+        //       <NFTBasicInfo name={listing?.asset.name} />
+
+        //       <div className={style.buyoutContainer}>
+        //         <NFTSalesInfo
+        //           price={listing?.buyoutCurrencyValuePerToken.displayValue}
+        //           buyNFT={buyNFT}
+        //         />
+        //       </div>
+        //     </div>
+        //   </div>
+        // )}
+        // <div className={style}></div>*/}
       </div>
     </TopNavbarLayout>
   );

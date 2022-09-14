@@ -8,21 +8,39 @@ const style = {
   heartIcon: "h-5 w-5 text-gray-500 dark:text-gray-400",
   likesCount: "text-sm font-semibold text-gray-500 dark:text-gray-400",
   nftImage: "rounded-b-lg object-cover",
+  imagePulse: "h-[448px] w-[448px]",
+  textPulse: "h-2 bg-slate-700 rounded",
+  headerIcon: "w-5 h-5",
+  iconPulse: "bg-slate-700 rounded-full",
 };
 
-const NFTImage = ({ image }) => {
+const NFTImage = ({ image, loading }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.nftHeader}>
-        <Image src="/eth-logo.svg" width={20} height={20} alt="eth" />
+        {loading ? (
+          <div className={`${style.iconPulse} ${style.headerIcon}`}></div>
+        ) : (
+          <Image src="/eth-logo.svg" width={20} height={20} alt="eth" />
+        )}
         <div className={style.likesContainer}>
-          <AiOutlineHeart className={style.heartIcon} />
-          <div className={style.likesCount}>210</div>
+          {loading ? (
+            <div className={`${style.textPulse} w-12`}></div>
+          ) : (
+            <>
+              <AiOutlineHeart className={style.heartIcon} />
+              <div className={style.likesCount}>210</div>
+            </>
+          )}
         </div>
       </div>
 
-      <div className={style}>
-        {image && <Image src={image} width={448} height={448} alt="nft" />}
+      <div className={style.nftImage}>
+        {loading ? (
+          <div className={style.imagePulse}></div>
+        ) : (
+          <Image src={image} width={448} height={448} alt="nft" />
+        )}
       </div>
     </div>
   );

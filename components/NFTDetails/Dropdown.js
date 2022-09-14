@@ -7,9 +7,10 @@ const style = {
   title: "font-semibold",
   rightIcon: "h-6 w-6 text-gray-400",
   innerTextContainer: "bg-gray-50 p-4 dark:bg-[#313339]",
+  textPulse: "h-2 bg-slate-700 rounded",
 };
 
-const Dropdown = ({ title, icon }) => {
+const Dropdown = ({ title, icon, description, loading }) => {
   return (
     <Disclosure>
       {({ open }) => (
@@ -28,7 +29,9 @@ const Dropdown = ({ title, icon }) => {
             </div>
           </Disclosure.Button>
           <Disclosure.Panel>
-            <div className={style.innerTextContainer}>{title}</div>
+            <div className={style.innerTextContainer}>
+              {loading ? <div className={style.textPulse}></div> : description}
+            </div>
           </Disclosure.Panel>
         </>
       )}
