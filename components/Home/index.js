@@ -9,7 +9,8 @@ import { collectionData } from "../../static/collections";
 import Listings from "./Listings";
 
 const style = {
-  wrapper: "flex flex-col dark:bg-[#202226] relative flex flex-col",
+  wrapper:
+    "flex flex-col bg-white dark:bg-[#202226] h-full relative flex flex-col",
   container: "relative flex h-[650px] flex-col",
   bannerContainer: "absolute h-1/3 w-full",
   banner: "rounded-t-lg object-cover",

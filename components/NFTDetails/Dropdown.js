@@ -1,5 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { BiChevronUp, BiChevronDown } from "react-icons/bi";
+import NFTAttributes from "./NFTAttributes";
 
 const style = {
   buttonWrapper: "flex items-center justify-between p-4",
@@ -10,9 +11,9 @@ const style = {
   textPulse: "h-2 bg-slate-700 rounded",
 };
 
-const Dropdown = ({ title, icon, description, loading }) => {
+const Dropdown = ({ title, icon, description, attributes, loading }) => {
   return (
-    <Disclosure>
+    <Disclosure defaultOpen>
       {({ open }) => (
         <>
           <Disclosure.Button>
@@ -30,7 +31,13 @@ const Dropdown = ({ title, icon, description, loading }) => {
           </Disclosure.Button>
           <Disclosure.Panel>
             <div className={style.innerTextContainer}>
-              {loading ? <div className={style.textPulse}></div> : description}
+              {loading ? (
+                <div className={style.textPulse}></div>
+              ) : description ? (
+                description
+              ) : (
+                <NFTAttributes attributes={attributes} />
+              )}
             </div>
           </Disclosure.Panel>
         </>

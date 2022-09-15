@@ -11,19 +11,32 @@ const style = {
 const NFTDetails = ({ details, loading }) => {
   const dropdownData = [
     { name: "Description", icon: <GrTextAlignLeft className={style.icon} /> },
-    { name: "Properties", icon: <BsFillBookmarkFill className={style.icon} /> },
+    { name: "Attributes", icon: <BsFillBookmarkFill className={style.icon} /> },
   ];
   return (
     <div className={style.wrapper}>
-      {dropdownData.map((item, index) => (
+      {/* {dropdownData.map((item, index) => (
         <Dropdown
           key={index}
           title={item.name}
           icon={item.icon}
           description={details.description}
+          properties={details.attributes}
           loading={loading}
         />
-      ))}
+        ))} */}
+      <Dropdown
+        title={dropdownData[0].name}
+        icon={dropdownData[0].icon}
+        description={details.description}
+        loading={loading}
+      />
+      <Dropdown
+        title={dropdownData[1].name}
+        icon={dropdownData[1].icon}
+        attributes={details.attributes}
+        loading={loading}
+      />
     </div>
   );
 };

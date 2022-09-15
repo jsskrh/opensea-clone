@@ -10,7 +10,7 @@ import TopNavbarLayout from "../../../layouts/TopNavbarLayout";
 
 const style = {
   wrapper:
-    "h-[100vh] mx-auto flex max-w-2xl flex-col space-y-4 py-4 dark:bg-[#202226] lg:max-w-none lg:py-0 lg:px-24",
+    "h-full mx-auto flex max-w-2xl flex-col space-y-4 py-4 bg-white dark:bg-[#202226] lg:max-w-none lg:py-0 lg:px-24",
   nftLoadingContainer: "flex flex-col lg:flex-row lg:space-x-4",
   loading: "animate-pulse",
   nftContainer: "flex flex-col lg:flex-row lg:space-x-4",
